@@ -1,0 +1,16 @@
+---
+description: Amiga-learning notes and source handling
+alwaysApply: true
+---
+
+# Amiga Learning Rules
+
+- Treat PDFs, images, and archives as read-only sources.
+- Primarily use "Bare-metal Amiga programming 2021_ocr.pdf" and
+  "Classic AmigaOS programming 2019_ocr.pdf" for learning, but also use
+  other available Amiga references as supporting sources.
+- Add new learning notes as Markdown with clear, descriptive filenames.
+- Include source references (file paths or URLs) and page numbers when relevant.
+- Keep terminology consistent with the original Amiga/Alicia docs.
+- Prefer detailed summaries (still avoid large verbatim excerpts).
+- Avoid hallucinations; if unsure, say "I don't know" or "I don't have that knowledge" and ask to verify.
