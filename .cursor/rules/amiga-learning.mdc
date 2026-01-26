@@ -6,9 +6,71 @@ alwaysApply: true
 # Amiga Learning Rules
 
 - Treat PDFs, images, and archives as read-only sources.
-- Primarily use "Bare-metal Amiga programming 2021_ocr.pdf" and
-  "Classic AmigaOS programming 2019_ocr.pdf" for learning, but also use
-  other available Amiga references as supporting sources.
+- When adding PDFs to MCP RAGs (pdfrag, local-rag), add them **one by one**, not in parallel, to avoid timeouts or aborted ingestions.
+
+## Primary Resources
+
+The primary resources for Amiga learning are PDF books stored in two MCP RAGs:
+- **user-pdfrag** (MCP server: `user-pdfrag`)
+- **user-local-rag** (MCP server: `user-local-rag`)
+
+Both RAGs should contain the same Amiga-related PDF files. Use these RAGs as the primary source for Amiga programming and hardware documentation.
+
+### Amiga-related PDFs in RAGs (27 files):
+
+**Core learning books (primary):**
+- Bare-metal Amiga programming 2021-ocr.pdf
+- Classic AmigaOS programming 2019-ocr.pdf
+
+**Additional Amiga references:**
+- rkrm-dos.pdf
+- 001-the-amiga-guru-book-a-reference-manual_1993-compressed.pdf
+- 003-Compute's Mapping the Amiga Second Edition 1993 (1)-part-1-ocr-combined.pdf
+- 011-Amiga_Programmers_Handbook_Vol_1_2nd_Edition_1987_Sybex-compressed.pdf
+- 012-amiga_programmers_handbook_vol_ii_1987.pdf
+- 013-Programmers Guide to the Amiga - eBook-ENG_1987.pdf
+- 014-Amiga_System_Programmers_Guide_1988.pdf
+- 015-advanced-system-programmers-guide-for-the-amiga-1988-bleek-jennrich-schulz.pdf
+- 020-Amiga_Hardware_Reference_Manual_3rd_edition_1991.pdf
+- Amiga Hardware Reference Manual - Commodore Amiga 1200 PAL.pdf
+- 021-Amiga_ROM_Kernel_Reference_Manual_Exec_1988.pdf
+- 023-Amiga_ROM_Kernel_Reference_Manual_Libraries_3rd_edition_1992.pdf
+- 024-Amiga_ROM_Kernel_Reference_Manual_Devices_3rd_edition_1992-compressed.pdf
+- 025-Amiga_ROM_Kernal_Reference_Manual_Includes_and_Autodocs_1989.pdf
+- 026-Amiga_ROM_Kernal_Reference_Manual_Libraries_and_Devices_(1990).pdf
+- 027-Amiga_Intuition_Reference_Manual_1987.pdf
+- 028-Amiga_User_Interface_Style_Guide_1991.pdf
+- 029-ROM-Kernel-Reference-Manual_-The-Coveted-Addendum-(2021-12-26).pdf
+- 052-1992-leemon-sheldon-computers-amigados-reference-guide.pdf
+- 053-1991-baker-jesup-et-al-the-amigados-manual-3rd-ed.pdf
+- Amiga Intern 1992.pdf
+- Amiga_ROM_Kernel_Reference_Manual_Libraries_3rd_Edition.pdf
+- AriadneSoftwareLtd_The_Kickstart_Guide_to_the_Amiga_1987.pdf
+- SAMS_Inside_the_Amiga_with_C_1987.pdf
+- SAMS_Inside_the_Amiga_with_C_2nd_edition_1988.pdf
+
+**Note:** The RAGs also contain non-Amiga PDFs (Raspberry Pi documentation) which should not be used for Amiga learning.
+
+## Local Documentation
+
+The `docs/` folder contains local project-specific documentation:
+- Alicia 1200 schematics and troubleshooting guides
+- Alicia 1200 manuals and BOM files
+- Amiga 1200 hardware schematics
+
+These files are accessible directly from the workspace (Cursor indexes the workspace automatically). See `notes/INDEX.md` for a complete list.
+
+## Learning Notes Index
+
+See `notes/INDEX.md` for a comprehensive index of all Amiga learning resources, including:
+- Core learning books
+- Additional Amiga references from MCPs
+- Alicia 1200 local documentation
+- Web resources
+
+## General Guidelines
+
+- Primarily use "Bare-metal Amiga programming 2021-ocr.pdf" and "Classic AmigaOS programming 2019-ocr.pdf" for learning, but also use other available Amiga references as supporting sources.
 - Add new learning notes as Markdown with clear, descriptive filenames.
 - Include source references (file paths or URLs) and page numbers when relevant.
 - Keep terminology consistent with the original Amiga/Alicia docs.
