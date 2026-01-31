@@ -11,7 +11,7 @@ Using a **CF card** (or **SD card** via adapter) on the **internal IDE** (H8) as
 
 - **Header:** Alicia/A1200 **H8** — 44-pin 2.5" IDE. **Gayle / AA-GAYLE**; device name **`scsi.device`**.
 - **Cable:** Same **44-way 2.5" IDE ribbon** (H8 → adapter). Cable carries 5 V on pins 41–44 if the adapter needs it.
-- **MaxTransfer:** Same as HDD — set **MaxTransfer = 0x1FE00** in HDToolBox for each partition. See `notes/alicia-ide-hdd.md` (MaxTransfer section).
+- **MaxTransfer:** Same as HDD — set **MaxTransfer = 0x1FE00** in HDToolBox for each partition. See `notes/alicia-build/alicia-ide-hdd.md` (MaxTransfer section).
 
 ## What you need
 
@@ -38,10 +38,10 @@ Using a **CF card** (or **SD card** via adapter) on the **internal IDE** (H8) as
 ## Relation to other storage
 
 - **PCMCIA CF:** A **CF2PCMCIA** adapter in the **PCMCIA slot** is a *second* storage path — removable, good for Amiga ↔ PC transfer (needs compactflash.device + FAT95). The **internal** CF-IDE is for the main/boot IDE drive.
-- **IDE HDD:** Same H8, same cable type, same MaxTransfer and install steps. See `notes/alicia-ide-hdd.md` for capacity, filesystem, and HDD-specific details.
+- **IDE HDD:** Same H8, same cable type, same MaxTransfer and install steps. See `notes/alicia-build/alicia-ide-hdd.md` for capacity, filesystem, and HDD-specific details.
 
 ## References
 
-- `notes/alicia-ide-hdd.md` — IDE interface, MaxTransfer, partition/format
+- `notes/alicia-build/alicia-ide-hdd.md` — IDE interface, MaxTransfer, partition/format
 - `notes/amigaos-3-2-install-guide.md` — Partition and install from CF or other source
-- `notes/hardware-learning-plan.md` — CF-IDE adapter and cable in order list
+- `notes/alicia-build/hardware-learning-plan.md` — CF-IDE adapter and cable in order list

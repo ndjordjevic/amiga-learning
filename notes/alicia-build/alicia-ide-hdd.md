@@ -9,7 +9,7 @@ Deep-dive on using a **2.5" IDE (PATA) hard drive** on the Alicia 1200 or Amiga 
 
 ## Interface
 
-- **Alicia 1200:** **44-pin 2.5" IDE** header (**H8**) — same as original A1200 ([Alicia BOM](notes/alicia-bom-r1_6.md), [manual](notes/alicia1200-manual.md)).
+- **Alicia 1200:** **44-pin 2.5" IDE** header (**H8**) — same as original A1200 ([Alicia BOM](notes/alicia-build/alicia-bom-r1_6.md), [manual](notes/alicia-build/alicia1200-manual.md)).
 - **Connector:** 44-pin IDC (2.5" laptop IDE). Pins 41–44 carry **+5 V** and GND so a 2.5" drive can be powered from the cable if the cable and header carry power.
 - **Controller:** Built-in IDE is **Gayle** (A1200) / **AA-GAYLE** (Alicia); device name in software is **`scsi.device`**. Single channel; one cable, typically two devices (master/slave) via cable select or jumpers.
 
@@ -76,4 +76,4 @@ References: [IDE & Max Transfer (EAB)](https://eab.abime.net/showthread.php?t=45
 - [A1200/A600 4xIDE Buffered IDE Interface](https://wiki.amiga.org/index.php/A1200/A600_4xIDE_Buffered_IDE_Interface) (AmigaWiki)
 - [AmigaKit 2.5" IDE 44-way cable](https://www.amigakit.com/hard-drive-cable-30cm-p-590.html)
 - `notes/amigaos-3-2-install-guide.md` — Partition and format, MaxTransfer
-- `notes/hardware-learning-plan.md` — Storage section (CF later)
+- `notes/alicia-build/hardware-learning-plan.md` — Storage section (CF later)

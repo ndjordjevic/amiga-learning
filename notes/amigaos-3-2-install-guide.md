@@ -102,4 +102,4 @@ If you have a **license code** (e.g. from your CD-Rom purchase):
 - **Full official guide:** `amiga-os-3-2-cd/Install/ReadMe.txt` (prerequisites, ROM install, CD vs floppy, CPU libs, hardware notes).
 - **Partition/format:** `amiga-os-3-2-cd/Install/PartitionAndFormat.txt`.
 - **CD content layout:** `notes/amiga-os-3-2-cd-content.md`.
-- **Alicia storage/CF:** `notes/hardware-learning-plan.md` (Storage section), Amiga Shop / Retro Buddys CF-IDE adapter pages.
+- **Alicia storage/CF:** `notes/alicia-build/hardware-learning-plan.md` (Storage section), Amiga Shop / Retro Buddys CF-IDE adapter pages.

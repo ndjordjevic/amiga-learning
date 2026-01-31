@@ -89,12 +89,12 @@ How to burn **Kickstart 3.2** or **DiagROM** to physical ROM chips for an Amiga 
 
 - Alicia 1200 uses the same **two ROMs (HI/LO)** and pinout as the original A1200; socket positions may be labeled on the PCB (e.g. U6A, U6B).  
 - ROM timing is handled by the board (e.g. ATF16V8 on Alicia); 120ns or 150ns 27C400 is typically fine.  
-- See `notes/alicia-schematics-troubleshooting.md` for ROM/CPU notes.
+- See `notes/alicia-build/alicia-schematics-troubleshooting.md` for ROM/CPU notes.
 
 ## References
 
 - **DiagROM:** [diagrom.com](https://www.diagrom.com/) — **Download section:** [diagrom.com/index.php/download/](https://www.diagrom.com/index.php/download/) (file names, socket positions U6A/U6B, Stable vs Daily).
 - **Kickstart images:** AmigaOS 3.2 CD `ROM/` or `notes/amiga-os-3-2-cd-content.md`.
-- **A1200 ROM layout:** `notes/alicia-schematics-troubleshooting.md`.
+- **A1200 ROM layout:** `notes/alicia-build/alicia-schematics-troubleshooting.md`.
 - **Amiga forum:** e.g. [Burning Kickstart ROMS](https://forum.amiga.org/index.php?topic=16096.0), [Willem + 27C400](https://forum.amiga.org/index.php?topic=22870.0).
 - **TL866/Kickstart:** [Programming Amiga Kickstart with TL866CS](https://electronics.stackexchange.com/questions/558359/programming-amiga-kickstart-with-tl866cs).

@@ -63,7 +63,7 @@ This folder contains update archives downloaded from [Hyperion Entertainment](ht
 | AmigaOS-3.2.2.1-Hotfix.lha | 47.111 | Update3.2.2/ROMs/A1200.47.111-lo.bin, A1200.47.111-hi.bin |
 | AmigaOS-3.2.3.lha | 47.115 | Update3.2.3/ROMs/A1200.47.115-lo.bin, A1200.47.115-hi.bin |
 
-For **3.2.3 in ROM** (recommended): extract **AmigaOS-3.2.3.lha** and burn **Update3.2.3/ROMs/A1200.47.115-lo.bin** and **A1200.47.115-hi.bin**. See `notes/rom-burning-guide.md`.
+For **3.2.3 in ROM** (recommended): extract **AmigaOS-3.2.3.lha** and burn **Update3.2.3/ROMs/A1200.47.115-lo.bin** and **A1200.47.115-hi.bin**. See `notes/alicia-build/rom-burning-guide.md`.
 
 ## Install order (on Amiga)
 

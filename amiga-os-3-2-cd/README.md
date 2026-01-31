@@ -74,12 +74,12 @@ See **`notes/amigaos-3-2-install-guide.md`** (including “Making an install CF 
 - **ROM/** contains **kicka1200-lo.bin** and **kicka1200-hi.bin** (base 3.2, i.e. 3.2.0). Burn **LO** → socket **U6B**, **HI** → socket **U6A**.
 - For **3.2.3 in ROM**, use the ROM images from **`amiga-os-3-2-hyperion-downloads`** (extract AmigaOS-3.2.3.lha → Update3.2.3/ROMs/A1200.47.115-lo.bin and A1200.47.115-hi.bin).
 
-See **`notes/rom-burning-guide.md`**.
+See **`notes/alicia-build/rom-burning-guide.md`**.
 
 ## References
 
 - **Full CD analysis:** `notes/amiga-os-3-2-cd-content.md`
 - **Install guide:** `notes/amigaos-3-2-install-guide.md`
-- **ROM burning:** `notes/rom-burning-guide.md`
+- **ROM burning:** `notes/alicia-build/rom-burning-guide.md`
 - **Hyperion updates (3.2.3 etc.):** `amiga-os-3-2-hyperion-downloads/README.md`
 - **This folder:** `Install/ReadMe.txt`, `Install/PartitionAndFormat.txt`, `S/AmigaOS3.2CD.MD5.hashes`

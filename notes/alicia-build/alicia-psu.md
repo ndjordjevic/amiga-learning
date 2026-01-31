@@ -33,10 +33,10 @@ Many ATX cases are sold **without** a PSU; check the listing and buy a 300–450
 ## Manual and troubleshooting
 
 - **Manual:** Use a quality PSU; more watts is not better. Noisy ground can need connector isolation.
-- **No boot:** ATTiny expects POWER_OK and drives ATX_PS_ON. Check POWER_OK, 8 MHz clock (pin 2), and ATX_PS_ON (pin 11). See `notes/alicia-schematics-troubleshooting.md`.
+- **No boot:** ATTiny expects POWER_OK and drives ATX_PS_ON. Check POWER_OK, 8 MHz clock (pin 2), and ATX_PS_ON (pin 11). See `notes/alicia-build/alicia-schematics-troubleshooting.md`.
 
 ## Links and sources
 
 - Enterlogic: https://www.enterlogic.se/?page_id=607  
 - Flamelily (kit): https://shop.flamelily.co.uk/alicia1200  
-- Docs: `Alicia1200_Manual.pdf`, `Alicia 1200 Schematics & Troubleshooting.pdf`, `notes/alicia-bom-r1_6.md`.
+- Docs: `Alicia1200_Manual.pdf`, `Alicia 1200 Schematics & Troubleshooting.pdf`, `notes/alicia-build/alicia-bom-r1_6.md`.

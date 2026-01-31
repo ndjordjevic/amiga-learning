@@ -9,22 +9,22 @@ This is the hardware-only plan. We will add software/OS topics later.
 ## 0) Platform choice (A1200 vs Alicia 1200)
 - [x] Decide primary learning/build target: Chosen Alicia 1200 r2.0
 - [ ] Order all necessary components to build Alicia 1200 board
-  - [x] **Obsolete parts** (chipset, CPU, RAM, DAC U19, U28 RTC, X1 crystal) — sourced from specialist Amiga seller. See `notes/alicia-bom-r1_6.md` (Obsolete parts sourced).
-  - [ ] **CN9** — JAE TX24-50R-6ST-H1E (50-pin video port) — [Mouser EU](https://eu.mouser.com/ProductDetail/656-TX2450R6STH1E) (656-TX2450R6STH1E). Other: [Digi‑Key](https://www.digikey.se/en/products/detail/jae-electronics/TX24-50R-6ST-H1E/1283506). Compatible alternative: JAE **TX24A** series; see `notes/alicia-bom-r1_6.md`.
+  - [x] **Obsolete parts** (chipset, CPU, RAM, DAC U19, U28 RTC, X1 crystal) — sourced from specialist Amiga seller. See `notes/alicia-build/alicia-bom-r1_6.md` (Obsolete parts sourced).
+  - [ ] **CN9** — JAE TX24-50R-6ST-H1E (50-pin video port) — [Mouser EU](https://eu.mouser.com/ProductDetail/656-TX2450R6STH1E) (656-TX2450R6STH1E). Other: [Digi‑Key](https://www.digikey.se/en/products/detail/jae-electronics/TX24-50R-6ST-H1E/1283506). Compatible alternative: JAE **TX24A** series; see `notes/alicia-build/alicia-bom-r1_6.md`.
   - [ ] On-Shore ED18DT (18-pin DIP socket for **U28**; IC for U28 = **MSM6242B** RTC, obsolete — see BOM). [Digi‑Key](https://www.digikey.se/en/products/detail/on-shore-technology-inc/ED18DT/4147597)
 
 ## 1) Alicia 1200 build extras (beyond motherboard)
 - [x] Decide target use case: Amiga in-depth learning
-- [ ] ROM chips for burning Kickstart and DiagROM — order blank chips (e.g. 2× or 4× **27C400** or equivalent 512KB EPROM/flash) for burning; see `notes/rom-burning-guide.md`.
+- [ ] ROM chips for burning Kickstart and DiagROM — order blank chips (e.g. 2× or 4× **27C400** or equivalent 512KB EPROM/flash) for burning; see `notes/alicia-build/rom-burning-guide.md`.
 - [ ] Kickstart 3.2 (or 3.2.3) for A1200 — burn from CD (`amiga-os-3-2-cd/ROM/`) or from `amiga-os-3-2-hyperion-downloads` (3.2.3) using your programmer and the ROM chips above; or buy pre-made from [Amiga Shop](https://www.amiga-shop.net/en/Amiga-Software/AmigaOS-Amiga-operation-systems/AmigaOS-3-2-Rom::1069.html) (you already have a licence).
-- [ ] DiagROM (diagnostic ROM for board bring-up and troubleshooting) — [diagrom.com](https://www.diagrom.com/). Burn 32bit-LO.bin and 32bit-HI.bin to ROM chips (same type as above). See `notes/rom-burning-guide.md`.
+- [ ] DiagROM (diagnostic ROM for board bring-up and troubleshooting) — [diagrom.com](https://www.diagrom.com/). Burn 32bit-LO.bin and 32bit-HI.bin to ROM chips (same type as above). See `notes/alicia-build/rom-burning-guide.md`.
 - [x] AmigaOS 3.2 CD-Rom (purchased, without physical Kickstart ROMs) — [Amiga Shop](https://www.amiga-shop.net/en/Amiga-Software/AmigaOS-Amiga-operation-systems/AmigaOS-3-2-CD-Rom::1068.html) — **AmigaOS 3.2 licence already held** (from CD purchase).
 - [ ] AmigaOS 3.2 CF card (optional; install-file source for quick install; you already have a licence for ordering) — [Amiga Shop](https://www.amiga-shop.net/en/Amiga-Software/AmigaOS-Amiga-operation-systems/AmigaOS-3-2-CF-card::1070.html)
 - [ ] CF2PCMCIA adapter (removable CF for data transfer Amiga ↔ PC; needs compactflash.device + FAT95 on Amiga) — [Amiga Shop](https://www.amiga-shop.net/en/Amiga-Hardware/Amiga-classic-hardware/CF2PCMCIA-adapter-for-Amiga-600-1200::1006.html)
 - [ ] CF-IDE adapter (buffered) for A600/A1200 (main/boot CF + pass-through for 2nd IDE device) — [Amiga Shop](https://www.amiga-shop.net/en/Amiga-Hardware/Amiga-classic-hardware/CF-IDE-adapter-buffered-for-Amiga-600-1200::1230.html)
   - [ ] 2.5" IDE ribbon cable 5 cm or 15 cm (required: board H8 → CF-IDE adapter; e.g. Amiga Shop “2,5 inch IDE ribbon cable 5 cm” / “15 cm”)
 - [ ] Power:
-  - [ ] Suitable PSU: standard 24‑pin ATX, quality over wattage. See `notes/alicia-psu.md`.
+  - [ ] Suitable PSU: standard 24‑pin ATX, quality over wattage. See `notes/alicia-build/alicia-psu.md`.
   - [ ] Power cabling and connectors for Alicia 1200
 - [ ] Input:
   - [ ] Keyboard (A1200-compatible or USB/PS/2 solution supported by Alicia)
@@ -33,10 +33,10 @@ This is the hardware-only plan. We will add software/OS topics later.
   - [ ] Chosen video output path (RGB/SCART, VGA, HDMI scaler, etc.)
   - [ ] Appropriate cables and, if needed, external scaler/adapter
 - [ ] Storage:
-  - [ ] **Floppy drive (real):** Amiga-compatible internal floppy (e.g. Chinon FZ-354/MZ-354, Mitsumi D357T2/D359M3D, Panasonic JU-253-043P) + **A1200 floppy cable** (Shugart 34-pin; do not use a raw PC floppy cable — pinout differs). Alicia 1200 has the same 34-pin floppy header as A1200. Alternatively: PC floppy + **adapter** (e.g. [AmigaPCDriveAdapter](https://github.com/gianlucarenzi/AmigaPCDriveAdapter), [EZ-FD](https://github.com/indigolemon/EZ-FD)). See `notes/alicia-floppy-storage.md`.
-  - [ ] **Floppy alternate (Gotek / emulator):** If you want **both** real floppy and Gotek, get **GoDrive** — [GoDrive1200](https://www.retropassion.co.uk/product/godrive1200-gotek-for-amiga-a1200-and-a500/) (Retro Passion; ask for SLIM if using Mitsumi/TEAC/Panasonic drive) or [GoDRIvE1200 PRO](https://digitalretrobay.co.uk/godrive1200-pro/) (DigitalRetroBay). Switch between real FDD and Gotek as DF0; no case cutting. Or plain Gotek to replace floppy only ([AMIGAstore](https://amigastore.eu/323-usb-floppy-emulator-gotek.html), [Gotek-Retro](https://www.gotek-retro.eu/shop-gotek-oled-internal-a1200/)). See `notes/alicia-floppy-storage.md`.
-  - [ ] **IDE HDD (2.5" PATA):** 2.5" 44-pin PATA hard drive + **44-way 2.5" IDE ribbon cable** (5–30 cm, H8 → drive; cable carries power on pins 41–44). Set **MaxTransfer = 0x1FE00** in HDToolBox. 2.5" PATA HDDs are obsolete (used/refurb on eBay); buffered adapter optional for multiple devices. See `notes/alicia-ide-hdd.md`.
-  - [ ] **IDE CF/SD (internal):** CF card (or SD card with SD→IDE adapter) + **CF-IDE adapter** (buffered, see above) on H8 = main/boot drive; same cable, same **MaxTransfer = 0x1FE00**, same `scsi.device`. Solid-state, easy to source. See `notes/alicia-ide-cf-sd.md`.
+  - [ ] **Floppy drive (real):** Amiga-compatible internal floppy (e.g. Chinon FZ-354/MZ-354, Mitsumi D357T2/D359M3D, Panasonic JU-253-043P) + **A1200 floppy cable** (Shugart 34-pin; do not use a raw PC floppy cable — pinout differs). Alicia 1200 has the same 34-pin floppy header as A1200. Alternatively: PC floppy + **adapter** (e.g. [AmigaPCDriveAdapter](https://github.com/gianlucarenzi/AmigaPCDriveAdapter), [EZ-FD](https://github.com/indigolemon/EZ-FD)). See `notes/alicia-build/alicia-floppy-storage.md`.
+  - [ ] **Floppy alternate (Gotek / emulator):** If you want **both** real floppy and Gotek, get **GoDrive** — [GoDrive1200](https://www.retropassion.co.uk/product/godrive1200-gotek-for-amiga-a1200-and-a500/) (Retro Passion; ask for SLIM if using Mitsumi/TEAC/Panasonic drive) or [GoDRIvE1200 PRO](https://digitalretrobay.co.uk/godrive1200-pro/) (DigitalRetroBay). Switch between real FDD and Gotek as DF0; no case cutting. Or plain Gotek to replace floppy only ([AMIGAstore](https://amigastore.eu/323-usb-floppy-emulator-gotek.html), [Gotek-Retro](https://www.gotek-retro.eu/shop-gotek-oled-internal-a1200/)). See `notes/alicia-build/alicia-floppy-storage.md`.
+  - [ ] **IDE HDD (2.5" PATA):** 2.5" 44-pin PATA hard drive + **44-way 2.5" IDE ribbon cable** (5–30 cm, H8 → drive; cable carries power on pins 41–44). Set **MaxTransfer = 0x1FE00** in HDToolBox. 2.5" PATA HDDs are obsolete (used/refurb on eBay); buffered adapter optional for multiple devices. See `notes/alicia-build/alicia-ide-hdd.md`.
+  - [ ] **IDE CF/SD (internal):** CF card (or SD card with SD→IDE adapter) + **CF-IDE adapter** (buffered, see above) on H8 = main/boot drive; same cable, same **MaxTransfer = 0x1FE00**, same `scsi.device`. Solid-state, easy to source. See `notes/alicia-build/alicia-ide-cf-sd.md`.
   - [ ] **Optional PCMCIA storage:** CF card + **CF2PCMCIA adapter** (see above) in the PCMCIA slot = additional removable storage; good for data transfer Amiga ↔ PC. On Amiga you need **compactflash.device** and **FAT95** (or similar) to mount FAT-formatted CF. Other PCMCIA options: SRAM, network, etc.
 - [ ] Tools and test gear:
   - [ ] Soldering, hot air, flux, magnification

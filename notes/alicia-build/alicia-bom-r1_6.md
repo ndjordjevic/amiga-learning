@@ -47,7 +47,7 @@ The following obsolete parts were sourced from a specialist Amiga seller (chipse
 
 Seller confirmed: U19 = DAC; U24–U26 = smaller chips (2× CIA + Paula); U28 = RTC; crystal = X1.
 
-**ROM chips:** ROMs appear in the BOM as obsolete/legacy parts (no orderable part number for blank chips). The BOM does **not** list blank ROM chips for burning Kickstart or DiagROM — you must source them separately. Order **2× or 4×** blank 512KB ROMs (e.g. **27C400** or AM27C400, 120ns/150ns, or flash equivalent) and burn Kickstart 3.2 / DiagROM yourself. See `notes/hardware-learning-plan.md` (ROM chips, Kickstart, DiagROM) and `notes/rom-burning-guide.md`.
+**ROM chips:** ROMs appear in the BOM as obsolete/legacy parts (no orderable part number for blank chips). The BOM does **not** list blank ROM chips for burning Kickstart or DiagROM — you must source them separately. Order **2× or 4×** blank 512KB ROMs (e.g. **27C400** or AM27C400, 120ns/150ns, or flash equivalent) and burn Kickstart 3.2 / DiagROM yourself. See `notes/alicia-build/hardware-learning-plan.md` (ROM chips, Kickstart, DiagROM) and `notes/alicia-build/rom-burning-guide.md`.
 
 ## XR jumper guidance (summary)
 - XR2/XR3 mounted for floppy header extra functions.
