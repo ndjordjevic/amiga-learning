@@ -67,6 +67,11 @@ The `docs/` folder and project contain local project-specific documentation (acc
 - https://shop.flamelily.co.uk/alicia1200
 - https://nextcloud.syntaxsociety.se/index.php/s/R3twMwanY6oLrHd
 
+**iCloud Retro/Amiga (software and books):**  
+A separate reference location with Amiga software and books (outside this workspace). More content is being copied there over time.
+- Path: `~/Library/Mobile Documents/com~apple~CloudDocs/Programming/Retro/Amiga`
+- Typical contents: **Books/** (PDFs, e.g. Amiga Guru Book, vbcc), **Software/** (AmigaOS 3.2.x .lha, AmigaOS CD image, NDK, developer ADFs, FS-UAE, AmigaTestKit, etc.). Use as a reference when the user refers to “Retro/Amiga” or “iCloud Amiga” content.
+
 ## General Guidelines
 
 - Primarily use "Bare-metal Amiga programming 2021-ocr.pdf" and "Classic AmigaOS programming 2019-ocr.pdf" for learning, but also use other available Amiga references as supporting sources.
