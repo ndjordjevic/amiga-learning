@@ -15,7 +15,7 @@ source: 2025-10-08 BOM Alicia 1200 R1_6.pdf
 
 ## Key connectors and headers (examples)
 - CN8: 120-pin local bus (Tornado II) JAE TX24-120R-6ST-H1E.
-- CN9: 50-pin video port JAE TX24-50R-6ST-H1E.
+- CN9: 50-pin video port JAE **TX24-50R-6ST-H1E** (50 contacts, 2-row, 1.27 mm pitch, through-hole receptacle). **Compatible alternative:** JAE **TX24A/TX25A** series (same pitch, same mating interface and board footprint); use 50-position receptacle from that series if TX24 is unavailable.
 - CN7: 24-pin ATX power Molex 39306247.
 - H8: 44-pin 2.5-inch IDE header.
 - H6: 22-pin clock port header (alt 44-pin header available).
@@ -24,7 +24,10 @@ source: 2025-10-08 BOM Alicia 1200 R1_6.pdf
 - Custom chipset: ALICE, LISA, AA-GAYLE, BUDGIE, MOS8520s, ROMs, ADV101.
 - CPU: MC68EC020 (U1).
 - DRAM and RTC parts listed as obsolete (HM514260AJ8, MSM6242B, etc.).
+- **U28:** Socket = On-Shore ED18DT (18-pin DIP). **IC for U28 = MSM6242B** (OKI) — Real-Time Clock (RTC). Listed as obsolete in BOM; source used/alternate or compatible RTC as needed.
 - X1 oscillator listed as obsolete.
+
+**ROM chips:** ROMs appear in the BOM as obsolete/legacy parts (no orderable part number for blank chips). The BOM does **not** list blank ROM chips for burning Kickstart or DiagROM — you must source them separately. Order **2× or 4×** blank 512KB ROMs (e.g. **27C400** or AM27C400, 120ns/150ns, or flash equivalent) and burn Kickstart 3.2 / DiagROM yourself. See `notes/hardware-learning-plan.md` (ROM chips, Kickstart, DiagROM) and `notes/rom-burning-guide.md`.
 
 ## XR jumper guidance (summary)
 - XR2/XR3 mounted for floppy header extra functions.
