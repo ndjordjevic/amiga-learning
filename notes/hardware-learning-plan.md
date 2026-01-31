@@ -32,8 +32,10 @@ This is the hardware-only plan. We will add software/OS topics later.
   - [ ] Chosen video output path (RGB/SCART, VGA, HDMI scaler, etc.)
   - [ ] Appropriate cables and, if needed, external scaler/adapter
 - [ ] Storage:
-  - [ ] 2.5\" IDE or CF/SD solution
-  - [ ] Optional PCMCIA storage/expansion
+  - [ ] **Floppy drive (real):** Amiga-compatible internal floppy (e.g. Chinon FZ-354/MZ-354, Mitsumi D357T2/D359M3D, Panasonic JU-253-043P) + **A1200 floppy cable** (Shugart 34-pin; do not use a raw PC floppy cable — pinout differs). Alicia 1200 has the same 34-pin floppy header as A1200. Alternatively: PC floppy + **adapter** (e.g. [AmigaPCDriveAdapter](https://github.com/gianlucarenzi/AmigaPCDriveAdapter), [EZ-FD](https://github.com/indigolemon/EZ-FD)). See `notes/alicia-floppy-storage.md`.
+  - [ ] **Floppy alternate (Gotek / emulator):** If you want **both** real floppy and Gotek, get **GoDrive** — [GoDrive1200](https://www.retropassion.co.uk/product/godrive1200-gotek-for-amiga-a1200-and-a500/) (Retro Passion; ask for SLIM if using Mitsumi/TEAC/Panasonic drive) or [GoDRIvE1200 PRO](https://digitalretrobay.co.uk/godrive1200-pro/) (DigitalRetroBay). Switch between real FDD and Gotek as DF0; no case cutting. Or plain Gotek to replace floppy only ([AMIGAstore](https://amigastore.eu/323-usb-floppy-emulator-gotek.html), [Gotek-Retro](https://www.gotek-retro.eu/shop-gotek-oled-internal-a1200/)). See `notes/alicia-floppy-storage.md`.
+  - [ ] **IDE HDD (2.5" PATA):** 2.5" 44-pin PATA hard drive + **44-way 2.5" IDE ribbon cable** (5–30 cm, H8 → drive; cable carries power on pins 41–44). Set **MaxTransfer = 0x1FE00** in HDToolBox. 2.5" PATA HDDs are obsolete (used/refurb on eBay); buffered adapter optional for multiple devices. See `notes/alicia-ide-hdd.md`. (CF/SD solution later.)
+  - [ ] **Optional PCMCIA storage:** CF card + **CF2PCMCIA adapter** (see above) in the PCMCIA slot = additional removable storage; good for data transfer Amiga ↔ PC. On Amiga you need **compactflash.device** and **FAT95** (or similar) to mount FAT-formatted CF. Other PCMCIA options: SRAM, network, etc.
 - [ ] Tools and test gear:
   - [ ] Soldering, hot air, flux, magnification
   - [ ] Basic diagnostics (multimeter, maybe logic probe/oscilloscope)

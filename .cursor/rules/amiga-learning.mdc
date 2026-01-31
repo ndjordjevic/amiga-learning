@@ -53,20 +53,19 @@ Both RAGs should contain the same Amiga-related PDF files. Use these RAGs as the
 
 ## Local Documentation
 
-The `docs/` folder contains local project-specific documentation:
-- Alicia 1200 schematics and troubleshooting guides
-- Alicia 1200 manuals and BOM files
-- Amiga 1200 hardware schematics
+The `docs/` folder and project contain local project-specific documentation (accessible from the workspace; Cursor indexes it automatically):
 
-These files are accessible directly from the workspace (Cursor indexes the workspace automatically). See `notes/INDEX.md` for a complete list.
+**Alicia 1200 local docs:**
+- Alicia 1200 Schematics & Troubleshooting.pdf
+- Alicia1200_Manual.pdf
+- 2025-10-08 BOM Alicia 1200 R1_6.pdf
+- Alicia1200_Public/ (schematics, manuals, placement images, BOM, Tornado v2 docs)
+- A1200_R2.pdf (Amiga 1200 schematics, Rev 2)
 
-## Learning Notes Index
-
-See `notes/INDEX.md` for a comprehensive index of all Amiga learning resources, including:
-- Core learning books
-- Additional Amiga references from MCPs
-- Alicia 1200 local documentation
-- Web resources
+**Web resources:**
+- https://www.enterlogic.se/?page_id=607
+- https://shop.flamelily.co.uk/alicia1200
+- https://nextcloud.syntaxsociety.se/index.php/s/R3twMwanY6oLrHd
 
 ## General Guidelines
 
