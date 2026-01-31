@@ -9,6 +9,7 @@ This is the hardware-only plan. We will add software/OS topics later.
 ## 0) Platform choice (A1200 vs Alicia 1200)
 - [x] Decide primary learning/build target: Chosen Alicia 1200 r2.0
 - [ ] Order all necessary components to build Alicia 1200 board
+  - [x] **Obsolete parts** (chipset, CPU, RAM, DAC U19, U28 RTC, X1 crystal) — sourced from specialist Amiga seller. See `notes/alicia-bom-r1_6.md` (Obsolete parts sourced).
   - [ ] **CN9** — JAE TX24-50R-6ST-H1E (50-pin video port) — [Mouser EU](https://eu.mouser.com/ProductDetail/656-TX2450R6STH1E) (656-TX2450R6STH1E). Other: [Digi‑Key](https://www.digikey.se/en/products/detail/jae-electronics/TX24-50R-6ST-H1E/1283506). Compatible alternative: JAE **TX24A** series; see `notes/alicia-bom-r1_6.md`.
   - [ ] On-Shore ED18DT (18-pin DIP socket for **U28**; IC for U28 = **MSM6242B** RTC, obsolete — see BOM). [Digi‑Key](https://www.digikey.se/en/products/detail/on-shore-technology-inc/ED18DT/4147597)
 
