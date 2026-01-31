@@ -1,0 +1,57 @@
+; $VER: Shell-Startup 41.1 (20.10.2020)
+
+ECHO "Retrieving system information..." 
+
+IF EXISTS C:CPU
+  CPU CPUTYPE TO ENV:CPU
+  CPU FPUTYPE TO ENV:FPU
+  ELSE
+  ECHO ??? >ENV:CPU
+  ECHO ??? >ENV:FPU
+ENDIF
+
+IF EXISTS C:AVAIL
+  AVAIL TOTAL >ENV:FREEMEM
+IF EXISTS C:EVAL
+  EVAL $FREEMEM / 1024 / 1024 >ENV:MBRAM
+  ELSE 
+    ECHO ??? >ENV:MBRAM
+ENDIF
+
+IF $MBRAM EQ 0
+  ECHO "Less than 1" >ENV:MBRAM
+ENDIF  
+ENDIF  
+
+Amigamodel >ENV:MACHINE
+
+IF $MACHINE EQ CDTV
+Version cdtv.device >ENV:CDTVD 
+ENDIF
+
+ECHO "" 
+ECHO " Detected Amiga Model:*E[32m" $MACHINE "*E[0m" 
+ECHO " Processor:*E[32m" $CPU "*E[0m" 
+ECHO " Floating Point Unit:*E[32m" $FPU "*E[0m"
+ECHO " Kickstart:*E[32m" $Kickstart "*E[0m" 
+ECHO " Free RAM:*E[32m" $MBRAM "MB" "*E[0m"  
+ECHO " OS:*E[32m" AmigaPE 1.0 "*E[0m"
+ECHO " Real Time Clock reports:*E[32m" `date` "*E[0m"
+
+IF "$CDTVD" EQ "cdtv.device 35.2"
+ECHO " CDTV Extended ROM:*E[32m" "2.9 beta" "*E[0m"
+ECHO "*E[32m*E[41m*E[1m" "Please upgrade your CDTV Extended ROM set!" "*E[0m"
+ENDIF
+
+IF "$CDTVD" EQ "cdtv.device 35.7"
+ECHO " CDTV Extended ROM:*E[32m" "0.1 gamma" "*E[0m"
+ECHO "*E[32m*E[41m*E[1m" "Please upgrade your CDTV Extended ROM set!" "*E[0m"
+ENDIF
+
+IF "$CDTVD" EQ "cdtv.device 35.9"
+ECHO " CDTV Extended ROM:*E[32m" "1.0" "*E[0m"
+ECHO "*E[32m*E[41m*E[1m" "Please upgrade your CDTV Extended ROM set!" "*E[0m"
+ENDIF
+
+ECHO ""
+PROMPT "%N.%S> "

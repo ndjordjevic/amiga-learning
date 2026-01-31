@@ -1,0 +1,25 @@
+; $VER: Startup-Sequence_Preinstallation_Environment 47.1 (19.03.2021)
+
+RMTM >NIL:
+
+FixRomLibs 47
+SetPatch >NIL:
+Version >NIL:
+
+MakeDir RAM:T RAM:ENV
+Copy ENVARC: RAM:ENV QUIET ALL NOREQ
+
+Assign >NIL: ENV: RAM:ENV
+Assign >NIL: T:   RAM:T
+Assign >NIL: Locale:   T:
+
+
+SetEnv Workbench $Workbench
+SetEnv Kickstart $Kickstart
+UnSet Workbench
+UnSet Kickstart
+
+Path >NIL: RAM: C: SYS:Utilities S: SYS:System SYS:Prefs SYS:WBStartup SYS:Tools SYS:Install
+
+LoadWB LEGACY
+EndCLI >NIL:

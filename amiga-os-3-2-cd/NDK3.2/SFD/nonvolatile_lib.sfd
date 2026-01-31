@@ -1,0 +1,17 @@
+==id $Id: nonvolatile_lib.sfd,v 40.5 1993-07-30 17:13:06 vertex Exp $
+* "nonvolatile.library"
+==base _NVBase
+==bias 30
+==public
+==include <exec/types.h>
+==include <exec/lists.h>
+==include <libraries/nonvolatile.h>
+==version 40
+APTR GetCopyNV(CONST_STRPTR appName, CONST_STRPTR itemName, BOOL killRequesters) (A0,A1,D1)
+VOID FreeNVData(APTR data) (A0)
+UWORD StoreNV(CONST_STRPTR appName, CONST_STRPTR itemName, CONST_APTR data, ULONG length, BOOL killRequesters) (A0,A1,A2,D0,D1)
+BOOL DeleteNV(CONST_STRPTR appName, CONST_STRPTR itemName, BOOL killRequesters) (A0,A1,D1)
+struct NVInfo *GetNVInfo(BOOL killRequesters) (D1)
+struct MinList *GetNVList(CONST_STRPTR appName, BOOL killRequesters) (a0,D1)
+BOOL SetNVProtection (CONST_STRPTR appName, CONST_STRPTR itemName, LONG mask, BOOL killRequesters) (a0,a1,d2,d1)
+==end

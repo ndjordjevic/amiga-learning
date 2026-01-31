@@ -14,6 +14,14 @@ This is the hardware-only plan. We will add software/OS topics later.
 
 ## 1) Alicia 1200 build extras (beyond motherboard)
 - [x] Decide target use case: Amiga in-depth learning
+- [ ] ROM chips for burning Kickstart and DiagROM — order blank chips (e.g. 2× or 4× **27C400** or equivalent 512KB EPROM/flash) for burning; see `notes/rom-burning-guide.md`.
+- [ ] Kickstart 3.2 (or 3.2.3) for A1200 — burn from CD (`amiga-os-3-2-cd/ROM/`) or from `amiga-os-3-2-hyperion-downloads` (3.2.3) using your programmer and the ROM chips above; or buy pre-made from [Amiga Shop](https://www.amiga-shop.net/en/Amiga-Software/AmigaOS-Amiga-operation-systems/AmigaOS-3-2-Rom::1069.html) (you already have a licence).
+- [ ] DiagROM (diagnostic ROM for board bring-up and troubleshooting) — [diagrom.com](https://www.diagrom.com/). Burn 32bit-LO.bin and 32bit-HI.bin to ROM chips (same type as above). See `notes/rom-burning-guide.md`.
+- [x] AmigaOS 3.2 CD-Rom (purchased, without physical Kickstart ROMs) — [Amiga Shop](https://www.amiga-shop.net/en/Amiga-Software/AmigaOS-Amiga-operation-systems/AmigaOS-3-2-CD-Rom::1068.html) — **AmigaOS 3.2 licence already held** (from CD purchase).
+- [ ] AmigaOS 3.2 CF card (optional; install-file source for quick install; you already have a licence for ordering) — [Amiga Shop](https://www.amiga-shop.net/en/Amiga-Software/AmigaOS-Amiga-operation-systems/AmigaOS-3-2-CF-card::1070.html)
+- [ ] CF2PCMCIA adapter (removable CF for data transfer Amiga ↔ PC; needs compactflash.device + FAT95 on Amiga) — [Amiga Shop](https://www.amiga-shop.net/en/Amiga-Hardware/Amiga-classic-hardware/CF2PCMCIA-adapter-for-Amiga-600-1200::1006.html)
+- [ ] CF-IDE adapter (buffered) for A600/A1200 (main/boot CF + pass-through for 2nd IDE device) — [Amiga Shop](https://www.amiga-shop.net/en/Amiga-Hardware/Amiga-classic-hardware/CF-IDE-adapter-buffered-for-Amiga-600-1200::1230.html)
+  - [ ] 2.5" IDE ribbon cable 5 cm or 15 cm (required: board H8 → CF-IDE adapter; e.g. Amiga Shop “2,5 inch IDE ribbon cable 5 cm” / “15 cm”)
 - [ ] Power:
   - [ ] Suitable PSU: standard 24‑pin ATX, quality over wattage. See `notes/alicia-psu.md`.
   - [ ] Power cabling and connectors for Alicia 1200

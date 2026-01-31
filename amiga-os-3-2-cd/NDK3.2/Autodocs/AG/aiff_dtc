@@ -1,0 +1,7 @@
+@database "aiff_dtc"
+@master "Test:Expansion/NDK3.2/Autodocs/aiff_dtc.doc"
+
+@Node Main "aiff_dtc.doc"
+@toc "AG/INDEX/Main"
+@EndNode
+

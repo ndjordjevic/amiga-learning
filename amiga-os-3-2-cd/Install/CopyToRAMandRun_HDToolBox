@@ -1,0 +1,16 @@
+; $VER: CopyToRAM&Run 47.1 (26.01.2021)
+; Copies HDToolBox to RAM and runs it from there. 
+  
+; If < 1 MB RAM free then show not enough RAM message and quit.
+
+avail >env:MemTotB total
+If not val $MemTotB GE 1000000
+  RequestChoice "                  HDToolBox copying process suspended" "At least 1 MB of available RAM is required to install AmigaOS 3.2!*n*n                       Aborting procedure..." "Okay" >NIL:
+  Quit
+EndIf
+
+copy >NIL: AmigaOS3.2CD:Tools/HDToolBox(|.info) RAM:
+Protect >NIL: RAM:HDToolBox.info +rw
+WBLoad RAM:HDToolBox
+
+quit

@@ -1,0 +1,537 @@
+OS 3.2 CPU-FAQ.txt
+Written by Robert Miranda and others
+OS 3.2 Beta Team
+v1.3 (15-Mar-2021)
+
+There will be a point in the Amiga OS 3.2 installation where a CPU 
+library will be mentioned for host systems with a 68030, 68040, or 
+68060. This FAQ aims to point users of this faster CPU hardware in 
+the most useful direction and address the nags placed in the system 
+startup. The later part tries to explain some of the issues that are 
+at play in a complex system that evolved over several CPU generations.
+
+Q: Do I need a CPU library for my 68060-based Amiga?
+A: Yes. See the 68060 options located further down.
+
+Q: Do I need a CPU library for my 68040-based Amiga?
+A: Yes. See the 68040 options located further down.
+
+Q: Can I safely use an LC or EC version of a 68040 or 68060 CPU?
+A: There are problems using EC or LC parts. Most 68040/68060-optimized 
+applications are built expecting the subset of 68882 FPU instruction or 
+library support, and that is missing in both variants. The EC part is 
+also missing the MMU, and that component is generally needed to control 
+the data cache and/or burst accesses being done where they will 
+otherwise cause problems. Disabling the data cache is possible, as is 
+the xTTx registers, but performance is significantly affected by this, 
+and the FPU issue of the LC part is also present.
+
+Q: Do I need a CPU library for my 68030-based Amiga / Amiga with 68030 
+accelerator?
+A: Maybe. You have options depending on the CPU type present, and the 
+hardware in your system. More is described below.
+
+Q: Can I safely use an EC version of a 68030 CPU?
+A: Yes, but an errata message will be printed by the CPU command. To 
+address the issue, you will need the MuLibs package, and a slight 
+performance impact will occur in certain situations. More is described 
+in the 68030 section further down.
+
+Q: Do I need a CPU library for my 68020-based Amiga?
+A: Mostly the answer is No. Machines like the A1200 (and CD32) do not 
+have an MMU, so the answer is no if your Amiga model or 3rd-party 
+accelerator does not have a 68851 MMU chip. Machines with an A2620 
+C= accelerator have a 68851 MMU, and it can be used for development 
+debugging. Except for this, there is no need for a library on 68020 
+systems.
+
+Q: I have a 68000-based caching accelerator. How does this fit into 
+this subject?
+A: Follow your OEM instructions regarding use of the accelerator in 
+'turbo' mode. Your product does not have an MMU, and may only have 
+rudimentary internal TTx-like caching prevention for ChipRAM. Some 
+products attempt to bus-snoop DMA transfers, but their unsupported (by 
+C= back in the day) solution will fail against the GVP Series II 
+FastRAM memory and it's DMA disk I/O without the GVPSCSICtrl tool 
+option implemented. It will also fail against most RTG and Bridgecard 
+configurations when in turbo mode due to the shared memory they contain 
+that gets incorrectly cached.
+
+Q: I have a Vampire. How does this fit into this subject?
+A: See the Vampire support forums for your product. There may be a 
+need to update the unit's firmware/ROM if they corrected any unplanned 
+behavior since your purchase and you are encountering issues. In most 
+cases, current and more recent models work well when you follow the 
+instructions for OS 3.1.4 install and later.
+
+---------------------
+
+68060 CPU Options
+
+Most boards with this CPU will have a CPU library provided for it. A 
+list of options are below.
+
+- Phase5 (P5) hardware - use the offered libraries and installation 
+instructions on the a1k.org download area. Users with PPC CPU features 
+must only use the OEM library offerings. The MuLibs package may work 
+if the PPC CPU options are not enabled/not wanted. More detail is 
+available in the MuLibs package doumentation.
+
+- TekMagic/QuikPak - The v2 68060.library on the provided OEM media is 
+functional to get started. v2.3 68060.library was released by Ralph 
+Babel and is available on his website at babel.de/amiga.html. Further 
+information is also available in the GVP-FAQ.txt in this distribution. 
+The v1.x CPU library on the original support disks should not be used. 
+The MuLibs offerings are also compatible with all models, as is adding 
+the subset mmu.library to the Babel v2.2/v2.3 for some additional MMU 
+adjustments and debug functionality.
+
+- A3660 and other 68040-era boards upgraded to use a 68060 (PCB rework 
+or an adapter added) - The MuLibs package is your best option. If your 
+upgraded 3rd-party 68040 product had tools that interacted with the 
+68040.library, they will not work with a 68060.library, and you may 
+need to investigate solutions to Kickstart remap (MMU vs on-card) and 
+other enabling features such as automated AddMem functions at library 
+load time.
+
+- Other 68060 Hardware? - there are more, however the author's 
+inventory does not include them. The majority of products on the 
+market are generaly compatible when full 68060 CPUs are used (EC/LC 
+parts will have some added compatibility issues, mentioned earlier.)
+
+- MuLibs - The MuLibs project is compatible with most 3rd-party 68060 
+products. It has a robust feature set at the expense of a higher 
+memory footprint and slightly higher overead impact on performance. 
+More details are available in it's documentation. Hint: Unless you 
+know you need a specific feature, and it provides enhancement, less is 
+more (as in performance) in many cases. If you need a quick setup 
+solution, place the 680x0.library and the appropriate 680?0.library in 
+the LIBS: path and reboot. Further configuration can be done later 
+after reading and understanding the documentation. You will need to 
+do further configuration work on RTG and Bridgecard expansions, and 
+possibly Zorro II 16-bit memory cards (if installed).
+
+
+Behavioral Items To Be Aware Of With A 68060
+
+The 68060 will always attempt to burst-access across the system bus 
+when a cache is enabled in any mode - unless it is forced not to. For 
+code-reading, the Instruction Cache normally encounters no problems 
+with burst read-access to memory. However, a 4x 32-bit longword 
+burst-sccess to/from an I/O-driven register interface, with the Data 
+Cache on, can have catastrophic effects on I/O board behavior. 
+Foresight (or a time machine) would have been ideal to put down 
+best-practice design guidelines for spacing of I/O interface registers 
+to avoid this CPU's possible impact on the original Zorro II/III I/O 
+expansion guidelines, but these things are what they are. 
+
+The data cache must be disabled when shared memory or I/O registers are 
+being read or written to, and the Copyback mode (delayed write 
+potential) disabled on writes for I/O space. This can be done with the 
+native CPU xTTx registers on all 68030+ CPU variants or the MMU (only 
+on Full and LC versions). The xTTx registers offer lower overhead than 
+an MMU lookup table, but offer less granularity in the memory map. The 
+MMU offers greater granularity at the expense of MMU table RAM use and 
+table-access overhead. This behavioral setting of the data cache 
+applies to ChipRAM, RTG and Bridgecard shared memory (wherever they may 
+appear), and the ZII / ZIII I/O card register regions (see the Amiga 
+memory maps). 68060.library designers have taken different approaches 
+to their designs, and the best solution for your configuration may not 
+match someone else.
+
+It was discovered in March 2021 that the burst access by a 68060 CPU to 
+the slow Zorro II 16-bit Fast RAM expansion cards can significantly 
+impact read and/or write performance of sequential data transfers. 
+This has a greater impact on configurations that use this slower 24-bit 
+DMA capable memory for I/O buffereing, and when a system becomes very 
+low on memory (last resort Fast RAM). It has also been found at times 
+to hang some systems completely. Under all circumstances where 
+Zorro II 16-bit expansion memory is present, the 68060 CPU/MMU should 
+mark the memory space as not cachable. Performance (MB/sec) will 
+actually improve to the memory space as a result. The MuLibs package 
+with mmu.library and MuSetCacheMode should be reviewed and considered 
+with your choice of 68060.library. If you do not need the 2-8MB of 
+16-bit memory for a specific reason in a 68060-based system, it may be 
+simpler to disable or remove it.
+
+Errata:
+
+Load/Store Buffer Bypass mode on the Rev 1 / Rev 5 XC68060 CPU masks 
+are known errata. It is fixed in the fully qualified MC68060 Rev 6 
+(and EC/LC Rev 4). Your CPU library should automatically disable this 
+setting, or you should set it off, if the errata is reported.
+
+SuperScalar mode in the Rev 1 mask can sometimes cause stability 
+problems with some environments, including 680x0 Mac Emulation. 
+Disabling the mode (use the CPU command), or moving up to a later 
+revision CPU mask, may help.
+
+CPU Mask Notes: Rev 1 and Rev 5 XC68060 parts were offered in both EC, 
+LC, and Full function formats. It is not possible to distinguish 
+(easily) between these (lack-of) feature types on these mask sets in 
+software. Some may even have semi-functional MMU or FPU sections. The 
+Rev 6 MC68060 is fully qualified by Motorola, contains a full FPU and 
+MMU, and can be detected with a PCM register query/response. The 
+Rev 4 mask is an EC or LC version of the MC68060, is fully qualified 
+like the Rev 6, can be detected with a PCM register query. The 
+presence of an MMU (on the Rev 4 EC part) is not indicated by the PCM, 
+and must be software-detected. The data cache must be disabled or the 
+Tx registers properly set to disable caching/burst for several memory 
+regions. The lack of an FPU can cause crashes as most CPU libraries 
+and compiler optimizations expect the 68060's FPU. Use of EC/LC 68060 
+parts in an Amiga is therefore discouraged unless treated like a fast
+68020 or 68EC030 without a math chip.
+
+Further research documents on the Motorola 68060 CPU errata were 
+collected, distilled, and pusblihed in an Amiga Hardware forum post 
+on AmiBay under the author's ID there, TheBajaGuy.
+
+Known Amiga 68060.library offerings: [not comprehensive]
+
+- MuLibs - Generic CPU library project by Thomas Richter - See 
+AmiNet.net for the latest release offering. Author: Thomas Richter
+
+- Phase5 - see the A1K.org forum download area or Aminet.net. These 
+libraries are required for PPC feature offerings on those products 
+(when present). Author: Ralph Schmidt.
+
+- GVP/TekMagic - See babel.de/amiga.html. Earlier versions available 
+on gvp-m.com in DMS format. Recommended for GVP/TekMagic/QuikPak. 
+Uses an ENVARC: variable to remap Kickstart when library loads. 
+Author: Ralph Babel 
+
+- SpeedGeek – A recently updated bare bones generic 68060.library. 
+Links to downloads are available on the English Amiga Board 
+(eab.abime.net), Amiga.Org and Amibay.net forums. Original author: 
+Carsten Schlote
+
+Note: C= never produced a 68060.library.
+
+There have been some public forum discussions about building a 68060 
+CPU library that attempts to emulate the entire missing inline-FPU 
+instruction set of the EC/LC CPU variants with integer math 
+instructions. Much like the F-line exception code trap handling used 
+for running inline-68882 code on a 68004/060 FPU implementation, this 
+kind of emulation comes with high code-exception handling overhead 
+penalty, and FPU-math performance can be expected to be quite poor.
+
+
+----------------------
+
+68040 Options
+
+Most boards with this CPU will have a CPU library for it provided by 
+the OEM on a support disk. A list of common options are below.
+
+- A3640 and other 68040-era boards - either C= 68040.library v37.30, 
+OS 3.9 v44.2, or the MuLibs package are your best option. You may 
+need to investigate solutions to Kickstart remap (MMU vs on-card 
+hardware feature in memory) and other features if you chose to use 
+the OEM tools. Place the 68040.library in the LIBS: folder and reboot. 
+
+- GVP - GVP provided the C= 68040.library on their support disks. The 
+original v37.4 release is considered buggy, and the next best is to use 
+the later v37.30 release. Users of the 1999/2000-era Amiga OS 3.5/3.9 
+will have access to the v44.2 release of this library, and that is 
+preferred over v37.30. Place the 68040.library in the LIBS: folder and 
+reboot. The GVPCPUCtrl tool will also offer additional options for 
+Kickstart remap and moving the System Stack Pointer (MoveSSP) to 
+improve performance. More info on GVP is available in the GVP-FAQ.txt 
+document. Note: The MuLibs project is also fully compatible with the 
+GVP boards. See MuLibs below for additional info on that solution. 
+
+- PP&S - Progressive Peripherals and Software produced several products 
+with 68040 CPUs. The A2000-040/28, as an example, came with the C= 
+68040.library v37.4 and a support library of their own making that 
+requires that version of C= library be present. Because of the 
+stability and improvements made to most 68040.library offerings since, 
+and their incompatibility with newer library versions, consider the 
+MuLibs project for the 68040.library, and investigate using an AddMem 
+tool, or the more intricate ROMTag solutions, to adding the 
+non-AutoConfig high-mapped 32-bit memory on their products. It may be 
+beneficial to performance to AutoConfig some of the memory on these 
+products (if applicable) to allow early OS structures to locate in 
+32-bit RAM for best performance. A3000/A4000 products should not need 
+any additional memory tool/solutions and can use MuLibs or possibly 
+other 68040.library solutions.  MuLibs also now offers a means to do
+an AddMem at library initialization time from within it's 
+ENVARC:mmu-configuration file.
+
+- Phase5 (P5) hardware - use the offered libraries and installation 
+instructions on the a1k.org download area and forums. Some 3rd-parties 
+have also offered improvements/fixes (patches) to these releases to 
+being them up to the recent era. Some user have also used these 
+libraries with the A3640 and reported reasonable performance and 
+compatibility.
+
+- MuLibs - The MuLibs project is compatible with most 68040 products 
+from C= and 3rd parties at the expense of a higher memory footprint, 
+and the additional/enhanced features it makes available. More details 
+are available in it's documentation. Hint: Unless you know you need a 
+specific feature, and it provides enhancement, less is more (as in 
+performance) in many cases. If you need a quick setup solution, place 
+the 680x0.library and the 68040.library in the LIBS: path and reboot. 
+Further configuration can be done later after reading and understanding 
+the documentation. You will need to do further configuration work on 
+RTG, Bridgecard, and Zorro II Fast RAM expansions.
+
+There are additional accelerator products from other makers such as 
+the Apollo and and Blizzard products. These products were not handy 
+at the time this FAQ was written, but with an MMU-capable CPU, the 
+later generic C= or newer MuLibs 68040 offering should cover your 
+needs if you do not have the original software or documentation.
+
+It was discovered in March 2021 that the burst access by a 68040 CPU to 
+the slow Zorro II 16-bit Fast RAM expansion cards can significantly 
+impact read and/or write performance of sequential data transfers. 
+This has a greater impact on configurations that use this slower 24-bit 
+DMA capable memory for I/O buffereing, and when a system becomes very 
+low on memory (last resort Fast RAM). It has also been found at times 
+to hang some systems completely. Under all circumstances where 
+Zorro II 16-bit expansion memory is present, the 68040 CPU/MMU should 
+mark the memory space as not cachable. Performance (MB/sec) will 
+actually improve to the memory space as a result. The MuLibs package 
+with mmu.library and MuSetCacheMode should be reviewed and considered 
+with your choice of 68040.library. If you do not need the 2-8MB of 
+16-bit memory for a specific reason in a 68040-based system, it may be 
+simpler to disable or remove it.
+
+
+Behavioral Items To Be Aware Of With A 68040
+
+Like the 68060, the 68040 will attempt to burst-access across the bus 
+when the cache is enabled in any mode. For code-reading, the 
+Instruction Cache normally encounters no problems with burst 
+read-access to memory. However, a 4x 32-bit long-word burst-access 
+to/from an I/O-driven register interface, with the Data Cache on, can 
+have catastrophic effects on I/O board's behavior. The data cache must 
+be disabled when shared memory or I/O registers are being read or 
+written to, and the Copyback mode (delayed write) disabled on any 
+writes to I/O space. This can be done with the native CPU xTTx 
+registers on all CPU variants, or the MMU (only on Full and LC). xTTx 
+registers offer lower overhead than an MMU lookup table, but offer 
+less granularity. The MMU offers greater granularity at the expense 
+of MMU table RAM use and table-access overhead. This applies to 
+ChipRAM, RTG and Bridgecard shared memory (wherever they may appear), 
+and the ZII / ZIII I/O card destination addressed (See the Amiga 
+memory maps). 68040.library designers have also taken different 
+approaches to their designs. The best solution for your configuration 
+may not match someone else.
+
+There are many mask revisions of the XC/MC68040, and the latest 
+libraries seem to address most known errata. As with many OEM document 
+offerings of the era that were placed on dial-up Bulletin Board 
+Systems (BBS's), many of the original release documents on the MC68040 
+errata seem to have been lost to time and the IP transferred from 
+Motorola to Freescale and eventually to NXP. 
+
+Use of EC/LC 68040 parts is discouraged. The data cache must be 
+disabled or the xTTx registers properly set to disable caching/burst for 
+many memory regions. The lack of an FPU can cause crashes as most CPU 
+libraries and compiler optimizations expect the 68040's FPU. Most 
+libraries also address subtle errata found in earlier mask revisions.
+
+Known libraries:
+MuLibs - Generic CPU library project by Thomas Richter - See 
+Aminet.net for the latest offering
+Phase5 - see the A1K.org download area.
+Commodore - Produced an early v36 developer-only stub library, and 
+made available the v37.4, 37.10, v37.30 releases to 3rd party 
+developers for shipping and on media provided with the A3640 CPU card. 
+The OS 3.5/3.9 project from 1999/2000 by H & P produced the v44.2 
+68040.library, and it is usable. An unreleased v42 variant of the CPU 
+library was identified in historic document review and confirmed by 
+former internal C= staff in the mid-2010's as being generated just 
+prior to C= ceasing operations in 1994, but it apparently had little 
+difference than the last v37 offering.
+Others? - [needs more info here]
+
+There have been public forum discussions about building a 68060 CPU 
+library that attempts to emulate the entire missing inline-FPU 
+instruction set of the later EC/LC CPU variants with integer math 
+instructions. Much like the F-line exception code trap handling used 
+for inline-68882 code on 68004/060 CPUs, this kind of emulation would 
+come with high code-exception overhead penalty, and FPU-math 
+performance is expected to be quite poor.
+
+
+
+
+68030 Options
+
+There are two solutions to the popular CIIN errata reported by the 
+OS 3.2 CPU command. That becomes only one option if your 3rd-party 
+accelerator product uses a 68EC030.
+
+1. Use the MuLibs package. Place 680x0.library and 68030.library in 
+LIBS: and reboot.
+
+2. Use the SetCPU v1.4 tool (see AmiNet) to remap Kickstart to 32-bit 
+memory. Place the command "SetCPU >nil: FastROM" just prior to the 
+first instance of the CPU command in s:startup-sequence. This is not 
+an option if your CPU type is a 68EC030.
+
+These two solutions are for most basic systems, including the A2500 
+and A3000 models. Below is additional information for more complex 
+configurations and expansion options. The performance impact of 
+option 1 with a 68EC030 is also discussed.
+
+
+--------------
+
+Additional CPU Information 
+
+(Caches, DMA, Shared Memory, TTx Registers, and MMUs)
+
+The caches of the 68020/30/040/060 introduces a problem that needs to 
+be addressed when it comes to DMA and shared memory (ChipRAM, RTG 
+video, and PC Bridgecards are prime examples). The cache will become 
+invalid when another CPU or bus-master resource changes data in the 
+memory that the cache holds a copy of. The term for the changed data 
+in the cache is called 'stale' and it must be flushed, or a trip to the 
+Guru is mere CPU clock ticks away. Regardless of the newer CPUs in 
+this grouping (after the 68000/68010), this is a common issue.
+
+The Amiga OS introduced in v2.0x Kickstart the necessary APIs to 
+address caching control issues with multiple CPUs and/or DMA controller 
+data transfers. They had also identified problems with shared memory 
+regions, and made it known that ChipRAM, the motherboard resources 
+ranges, and expansion I/O memory regions could not be data-cached. 
+Most 3rd-party DMA controllers gained this interaction including the 
+C= scsi.device for A2091/A590 and native SCSI interfaces, GVP's 
+Series II hardware with DPRC chip, and the Microbotics HardFrame DMA 
+product. Others that updated their hardware drivers and used DMA in 
+the design may also have followed. Many drivers also cleared the CPU 
+caches themselves under 1.3 OS. It is also not good practice to 
+attempt burst-access to/from Chip RAM. There is a heavy wait-state 
+penalty due to Agnus DMA ownership of the Chip RAM bus on code 
+execution reads (instruction cache), and all (data cache) writes can 
+never be cached/copyback due to it being a shared memory space, nor 
+4x longword bursts to a generally 16-bit data environment.
+
+The problem remains for other shared memory spaces, and that is where 
+it becomes more complex. The Amiga's multiple bus/multiple bus-master 
+environment makes bus-snooping impossible to do on any shared memory 
+zones. The only option is to not cache any shared memory region in 
+any way.
+
+ChipRAM is the common denominator for all systems and expansion models. 
+It can not be data cached as the blitter can change any data. 
+Solutions to that are:
+
+1. Disable the Data Cache.
+
+2. Use CPU TTx registers to disable data caching for large memory 
+regions.
+
+3. Use the MMU with it's granular memory-access features to limit 
+caching to only safe areas.
+
+
+ChipRAM resides (max range) 0x00000000-0x001FFFFF (0MB-2MB). No 
+caching.
+Zorro II 8M (BigSpace) resides 0x0020000-0x009FFFFF (2MB-10MB). Caching 
+is allowed for this FastRAM if it matches the CPU's bus width 
+(on-card), unless some of the address space is occupied by RTG or 
+Graphics card shared memory - which makes it a less than simple answer. 
+It has also been proven that the 68040/68060 will have pipeline 
+performance problems (excessive overhead from wait states), or the bus 
+will occasionally hang when the stacked burst reads or writes hit the 
+slow memory space.
+There's a complex set of ranges in different model's and expansion 
+options for the rest of the memory map from 0x00A00000-0x00FFFFFF 
+(10MB-16MB) on classic Amiga systems, but the highlights are:
+- 0x00C00000-0x00D7FFFF (1.5MB) is the 'Ranger' Slow-Fast range for 
+memory not mapped into ChipRAM, and is safe to cache most of the time 
+for <=68030 CPUs.
+- 0x00E80000-0x00EFFFFF 512K of I/O space for possible multiple 
+expansion cards. It can never be cached. It must never be 
+burst-accessed.
+There exists additional places for memory and I/O cards in 
+Zorro III/AGA systems and that is allocated above 16MB (See the 
+A3000/A4000 memory maps), but the cache/no cache rules still apply 
+based on the expansion card type. Fast Memory can be cached. Shared 
+memory (on an RTG product) cannot. I/O cards cannot.
+
+
+The Problems 
+
+(Performance vs Functional)
+
+Option 1 - Disabling the data cache kills performance. Not an issue 
+for the 68020, but an issue for the others.
+
+Option 2 - Granularity of the 68030 CPU TTx register ranges is a 
+problem. The smallest chunk it can map non-cache is 16MB chunks. With 
+ChipRAM in the lower 16MB, this option must be used if a functional MMU 
+is not an option. This maps all of the Zorro II 8M space and I/O 
+expansion space as non-cache. It is as effective as turning off the 
+data cache unless there is 32-bit FastRAM in the system mapped above 
+the 16MB address space. If you have a 68EC030 in the system, this is 
+your only option to address the potential CIIN bug in the 68030 in the 
+lower 16MB address space. The granularity of the 68040/68060 TTx 
+registers are better, but still not as granular as one needs to do a 
+very good job. CPU library implementations may make use of both the 
+TTx/xTTx registers (to reduce MMU table overhead/complexity) and the 
+MMU (to control certain blocks of memory more closely). This is why 
+68EC0x0 CPU parts are discouraged in an Amiga (68030+). Use of an EC 
+CPU will have the least impact on system performance if all of the 
+additional 32-bit FastRAM is located >16MB address point. Several 
+classic and modern accelerator products have this, but you need to 
+check your system's memory map to confirm. Most boards can be updated 
+to a full 68030 CPU.
+
+Note: the 68EC020 in the A1200 and other platforms is a 24-bit address 
+bus CPU like the MC68000/MC68010. It's 'EC' designation means 
+something different than it does for the 68030+ CPUs, and the details 
+of an MMU & CPU library do not apply to it (it does not have an MMU).
+
+Option 3 - Use the MMU. Not an option with EC CPU types. C= shipped 
+most big-box systems with a full 68020/68030 CPU with functional MMU 
+parts and the Dave Haynie SetCPU tool. The FastROM Kickstart option 
+was suggested to improve performance - using the MMU. It addressed 
+that and two other problems on 68030 systems (i.e. a CPU with a data 
+cache). One was the CIIN hardware bug of the 68030 - the CPU ignored 
+the external hardware signal not to cache 32-bit long-word writes when 
+it did one, but the MMU solves the bug. The other was the ability to 
+more granularity control cache/no-cache regions in the memory map (vs 
+TTX register use). SetCPU mapped ChipRAM and I/O expansion spaces as 
+no-cache, and was able to detect (or knew about) the Bridgecard and 
+some RTG boards that placed their shared memory into otherwise FastRAM 
+expansion spaces if their drivers were loaded prior to activating it 
+and the data cache.
+
+This option is also used (along with the TTx solution) in most of the 
+68040/68060 libraries. Simpler libraries may not be as flexible as 
+more robust libraries, and may not set up the MMU or TTx registers for 
+optimal or most functional use. More robust library offerings may 
+consume larger amounts of memory for the MMU table and provide a slight 
+performance impact as a result of the added complexity. It's beyond 
+the scope of this FAQ to go into all of the details, but knowing your 
+system's expansion devices, the machine's memory map, and the memory 
+ranges they potentially reside at are a key starting point to 
+customization. If the system works with the data cache off, but has 
+problems with it on, further investigation of the data cache settings 
+will be needed.
+
+ 
+
+
+
+
+
+Additional Resources Online
+
+Aminet.net - One of the largest offerings of Amiga 3rd-party software.
+
+The Amiga Resource (amiga.resource.cx) website may have links to, or 
+offer downloads for, 3rd-party hardware installation disks, manuals, 
+and settings information.
+
+The BigBookOfAmigaHardware (www.bigbookofamigahardware.com)website may 
+have links to or information on related settings for many products.
+
+Other online forums exist in social media, and as dedicated websites 
+for hardware and software sale, development, and support for current 
+and legacy 3rd-party products.
+

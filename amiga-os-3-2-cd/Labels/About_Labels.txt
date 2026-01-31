@@ -1,0 +1,18 @@
+AmigaOS 3.2 Labels-ReadMe
+Revision 47.1 (02.09.2020)
+Copyright 2020 Hyperion-Entertainment
+
+
+This directory contains labels that can be used for many types of 
+storage media types to hold the AmigaOS 3.2 distribution. 
+
+These labels were designed for: Compact Flash (CF) cards, CD-ROMs, 
+diskettes, Secure Digital (SD) cards, Zip drives and a there is also a 
+generic small sized label which can be used in several other places 
+(magnetic hard drives, solid state drives, etc.).
+
+This is a complementary labels pack for AmigaOS 3.2 by Martin Mason Merz.
+
+
+All brand names and trademarks of this archive are the property of 
+their respective owners and are used for descriptive purpose only.

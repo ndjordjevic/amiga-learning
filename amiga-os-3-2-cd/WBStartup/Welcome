@@ -1,0 +1,3 @@
+  RequestChoice "                      AmigaPE 1.0" "Welcome to the Amiga Preinstallation Environment" "OK" >NIL:
+
+  Quit
