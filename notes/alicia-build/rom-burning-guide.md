@@ -14,8 +14,8 @@ How to burn **Kickstart 3.2** or **DiagROM** to physical ROM chips for an Amiga 
 | Item | Purpose |
 |------|--------|
 | **ROM programmer** | **Already have:** **XGECU T48** (Updated TL866II Plus). Programs EPROM/flash via USB; use **Minipro** or XGecu software. **27C400 is not natively supported** — you need an **adapter** (see below). |
-| **Adapter for 27C400** | T48/TL866II Plus has no built-in 27C400; use a **42-pin adapter** for 27C400/800/160/322 (e.g. [27c160-tl866-adapter](https://github.com/mafe72/27c160-tl866-adapter) or commercial equivalent). In software select **AM27C4096**; disable **Check ID** and **Pin Detect**. |
-| **2× blank ROM chips** | For A1200: **512KB each** (e.g. **AM27C400** or **27C400** EPROM, 120ns or 150ns; or **flash** equivalents). With the T48 you need the adapter above for 27C400. |
+| **Adapter for 27C400/27C800** | T48 has no built-in 27C400; use a **42-pin DIP42 adapter** for 27Cxxx. **Xgecu ADP_D42_EX-A** (for T48 / TL866-3G only; not TL866CS/II/A/T56): DIP42 + PLCC44 ZIF, supports **27C800, 27C160, 27C322** (and 27Vxxx, MX27C8100/1610). **27Cxxx** in the spec covers **27C400** as well as 27C800/27C160/27C322. **27C800** explicitly listed — ideal if you use 2× 27C800 for Kickstart. In software try **AM27C4096** or 27C800 and disable **Check ID** and **Pin Detect**. |
+| **2× blank ROM chips** | For A1200: **512KB each** (e.g. **AM27C400** or **27C400** EPROM, 120ns or 150ns; or **flash** equivalents). With the T48 you need the adapter above for 27C400. **Alternative:** **2× 27C800** (1MB each) — often cheaper and more plentiful; use **two** chips (same as 27C400). Burn the **LO** image into the **lower 512KB** of one 27C800 (U6B), **HI** into the **lower 512KB** of the other (U6A). A1200/Alicia 42-pin sockets and board logic handle A18 (lower bank is used). See “ROM types” and [EAB](https://eab.abime.net/showthread.php?t=112798), [TSB](https://www.tsb.space/knowledge-base/amiga-kickstart-rom-switcher-with-a-27c800-eprom/). |
 | **UV eraser** (optional) | Only if you use **EPROMs** and want to reuse them; EPROMs are erased with UV light. **Flash ROMs** do not need UV — you reprogram them in the programmer. |
 | **A1200/Alicia ROM sockets** | The board has two ROM sockets (U6A = high, U6B = low). Chips must be inserted with correct orientation (pin 1). |
 
@@ -52,7 +52,18 @@ How to burn **Kickstart 3.2** or **DiagROM** to physical ROM chips for an Amiga 
 ## ROM types
 
 - **27C400** (or AM27C400): 512KB × 8-bit, DIP. Common for A1200; 120ns or 150ns is typical. **EPROM** = needs UV eraser to erase and reuse.
-- **Flash ROMs**: Same capacity, reprogrammable in the programmer (no UV). Some vendors (e.g. [GGLabs](https://gglabs.us/)) sell pre-flashed or blank flash ROMs for Amiga; you still need a programmer to flash them unless you buy pre-programmed.
+- **27C800** (1MB): Often **cheaper and more plentiful** than 27C400. You still need **two** chips (one LO, one HI), same as 27C400. Burn the **512KB LO** image into the **lower 512KB** of one 27C800 (socket U6B), and the **512KB HI** image into the **lower 512KB** of the other 27C800 (socket U6A). The A1200/Alicia has 42-pin ROM sockets and **drives A18** so the lower bank is selected — no pin mod needed for standard Kickstart. Optional: duplicate the same 512KB image in both halves of each chip so it works regardless of A18. References: [EAB – 27C800 with A1200 kickstart](https://eab.abime.net/showthread.php?t=112798), [TSB – Kickstart ROM switcher with 27C800](https://www.tsb.space/knowledge-base/amiga-kickstart-rom-switcher-with-a-27c800-eprom/).
+- **Flash ROMs**: Same capacity as 27C400, reprogrammable in the programmer (no UV). Some vendors (e.g. [GGLabs](https://gglabs.us/)) sell pre-flashed or blank flash ROMs for Amiga; you still need a programmer to flash them unless you buy pre-programmed.
+
+## Alternative: KickRom-Flash (no EPROM burning)
+
+Instead of burning EPROMs, you can use **KickRom-Flash** adapters — programmable **27C400 emulators** that drop into the same ROM sockets. No UV eraser; reprogram via USB/programmer.
+
+- **KickRom-Flash 4x** (Alinea Computer): Holds **up to 4 Kickstarts** (512 KB each) on **one** adapter; switch via jumpers, optional rotary switch, or on A1200 via **Langley adapter**. **v2** has an LED display for the active bank.
+- **A1200:** You need **two** adapters (one for U6A/HI, one for U6B/LO), same as two 27C400 chips.
+- **Programming:** **KickRom-Progger** (sold separately) or **flash adapter for common burners** (e.g. Batronix). Amiga Shop also offers a **flashing service** (you supply ROM files).
+- **Fits:** A500/+, A600 (separate version), A1200, A2000, A3000, A4000.
+- **Source:** [Amiga Shop – KickRom-Flash 4x Flash Rom adapter (27C400 emulator)](https://www.amiga-shop.net/en/Amiga-Hardware/Amiga-classic-hardware/KickRom-Flash-4x-Flash-Rom-adapter-27C400-emulator-v1-2::1305.html), hardware design: [GitLab – Amiga 27C400 Emulator Adapter](https://gitlab.com/rwahler1/kicad/Amiga_27C400_Emulator_Adapter.git).
 
 ## Step-by-step (generic)
 
