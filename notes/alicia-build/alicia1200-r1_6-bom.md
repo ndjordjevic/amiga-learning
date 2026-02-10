@@ -4,7 +4,9 @@ title: Alicia 1200 r1.6 – BOM (factory vs user‑soldered)
 
 ## BOM metadata
 
-- Green rows = factory populated, gray rows = optional from Enterlogic.
+- **Green rows** = factory populated (pre-soldered)
+- **Gray rows** = optional add-ons when ordering from Enterlogic: **U3, U5, U11, U12, CN8, CN9**
+- **White rows** = user must solder (not factory-populated, not optional from Enterlogic)
 - Parts listed with manufacturer part numbers plus Digikey/Mouser references.
 - Original BOM: `docs/2025-10-08 BOM Alicia 1200 R1_6.pdf`.
 
@@ -164,12 +166,12 @@ These parts are **not factory‑populated** and must be soldered by you during a
 - **U13, U14** – ROM devices (Kickstart), MOS (use with sockets U13/U14 below)
 - **U20, U21, U22, U23** – DRAM, **HM514260AJ8** (Hitachi)
 
-### Programmable logic and microcontrollers
+### Programmable logic and microcontrollers (optional from Enterlogic)
 
-- **U3** – PLD, **ATF16V8B‑15SU**, 8 macrocell, 15 ns, 20‑SOIC (pre‑programmed)
-- **U5** – 8‑bit MCU, **PIC16F627A‑I/SO**, 1.75 KB Flash, 18‑SOIC (pre‑programmed)
-- **U11** – 8‑bit MCU, **PIC16F84A**, 1.75 KB Flash, 18‑SOIC (pre‑programmed; variants: **PIC16F84A‑20I/SO** or **PIC16F84A‑04/SO**)
-- **U12** – 8‑bit MCU, 2 KB Flash, 14‑SOIC (Atmel)
+- **U3** – PLD, **ATF16V8B‑15SU**, 8 macrocell, 15 ns, 20‑SOIC (pre‑programmed; **optional from Enterlogic**)
+- **U5** – 8‑bit MCU, **PIC16F627A‑I/SO**, 1.75 KB Flash, 18‑SOIC (pre‑programmed; **optional from Enterlogic**)
+- **U11** – 8‑bit MCU, **PIC16F84A**, 1.75 KB Flash, 18‑SOIC (pre‑programmed; variants: **PIC16F84A‑20I/SO** or **PIC16F84A‑04/SO**; **optional from Enterlogic**)
+- **U12** – 8‑bit MCU, **ATTINY24A‑SSUR**, 2 KB Flash, 14‑SOIC (Atmel; pre‑programmed; **optional from Enterlogic**)
 
 ### Analog and support ICs
 
@@ -187,8 +189,8 @@ These parts are **not factory‑populated** and must be soldered by you during a
 - **CN5** – right‑channel RCA jack, right‑angle, mono 3.2 mm, CUI **RCJ‑042**
 - **CN6** – 68‑pin PCMCIA right‑angle through‑hole connector, TE Connectivity **5535653‑1**
 - **CN7** – 24‑pin 4.2 mm vertical ATX‑power header, Molex **39306247**
-- **CN8** – 120‑pin local‑bus connector, JAE **TX24‑120R‑6ST‑H1E** (MB‑side; available as Enterlogic option)
-- **CN9** – 50‑pin vertical video‑port connector, JAE **TX24‑50R‑6ST‑H1E** (MB‑side; available as Enterlogic option)
+- **CN8** – 120‑pin local‑bus connector, JAE **TX24‑120R‑6ST‑H1E** (MB‑side; **optional from Enterlogic**)
+- **CN9** – 50‑pin vertical video‑port connector, JAE **TX24‑50R‑6ST‑H1E** (MB‑side; **optional from Enterlogic**)
 
 ## 2.6 Headers (user‑soldered)
 

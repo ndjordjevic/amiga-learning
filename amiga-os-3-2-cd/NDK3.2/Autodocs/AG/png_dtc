@@ -1,7 +1,0 @@
-@database "png_dtc"
-@master "Test:Expansion/NDK3.2/Autodocs/png_dtc.doc"
-
-@Node Main "png_dtc.doc"
-@toc "AG/INDEX/Main"
-@EndNode
-

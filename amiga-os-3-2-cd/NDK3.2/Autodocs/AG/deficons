@@ -1,7 +1,0 @@
-@database "deficons"
-@master "Test:Expansion/NDK3.2/Autodocs/deficons.doc"
-
-@Node Main "deficons.doc"
-@toc "AG/INDEX/Main"
-@EndNode
-

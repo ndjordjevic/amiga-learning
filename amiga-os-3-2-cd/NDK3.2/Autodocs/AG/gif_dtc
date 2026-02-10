@@ -1,7 +1,0 @@
-@database "gif_dtc"
-@master "Test:Expansion/NDK3.2/Autodocs/gif_dtc.doc"
-
-@Node Main "gif_dtc.doc"
-@toc "AG/INDEX/Main"
-@EndNode
-
