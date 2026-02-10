@@ -13,6 +13,11 @@ This is the hardware-only plan. We will add software/OS topics later.
   - [ ] **CN9** — JAE TX24-50R-6ST-H1E (50-pin video port) — [Mouser EU](https://eu.mouser.com/ProductDetail/656-TX2450R6STH1E) (656-TX2450R6STH1E). Other: [Digi‑Key](https://www.digikey.se/en/products/detail/jae-electronics/TX24-50R-6ST-H1E/1283506). Compatible alternative: JAE **TX24A** series; see `notes/alicia-build/alicia-bom-r1_6.md`.
   - [ ] On-Shore ED18DT (18-pin DIP socket for **U28**; IC for U28 = **MSM6242B** RTC, obsolete — see BOM). [Digi‑Key](https://www.digikey.se/en/products/detail/on-shore-technology-inc/ED18DT/4147597)
 
+## 0.5) Alicia board inspection and assembly strategy
+- [ ] High-level plan for **initial board inspection** when the Alicia 1200 PCB arrives (identify what is factory-soldered vs. what you must add; sanity-check for visible defects, solder bridges, missing parts). Details will go into a separate inspection/build document later.
+- [ ] High-level plan for **testing parts you will solder** (resistors, capacitors, ICs, sockets, connectors, etc.) before/while soldering — basic checks where possible (continuity, orientation/markings, pin condition; plan which parts are “expensive/critical” to double-check).
+- [ ] Outline **soldering strategies** (order of assembly, SMD vs through-hole approach, flux/inspection habits) and **incremental testing steps** (what to test after each major cluster: power rails, clock, minimal boot, basic video). This will be expanded into a dedicated step-by-step build-and-test guide.
+
 ## 1) Alicia 1200 build extras (beyond motherboard)
 - [x] Decide target use case: Amiga in-depth learning
 - [ ] ROM chips for burning Kickstart and DiagROM — order blank chips (e.g. 2× or 4× **27C400** or equivalent 512KB EPROM/flash) for burning; see `notes/alicia-build/rom-burning-guide.md`.
