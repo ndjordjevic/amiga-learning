@@ -92,10 +92,13 @@ These parts are **optional add-ons** when ordering the Alicia 1200 board from En
 
 - [x] **CN8** (120-pin local bus connector) — **already ordered separately from Digi-Key** (670-1368-ND)
 
-**Programmable ICs — decision needed:**
-- [ ] **U3** — ATF16V8B-15SU (PLD, pre-programmed) — optional from Enterlogic; decide if needed
-- [ ] **U5** — PIC16F627A-I/SO (MCU, pre-programmed) — optional from Enterlogic; decide if needed
-- [ ] **U11** — PIC16F84A-20I/SO or PIC16F84A-04/SO (MCU, pre-programmed) — optional from Enterlogic; decide if needed
-- [ ] **U12** — ATTINY24A-SSUR (MCU, pre-programmed) — optional from Enterlogic; decide if needed
+### Programmable ICs (included with Alicia 1200 r2.0 kit)
+
+For the **Alicia 1200 r2.0** kit/board you’re getting, these are included **pre‑programmed** (no separate ordering needed):
+
+- [x] **U3** — ATF16V8B-15SU (PLD, pre-programmed; gray item in r1.6 BOM)
+- [x] **U5** — PIC16F627A-I/SO (MCU, pre-programmed; gray item in r1.6 BOM)
+- [x] **U11** — PIC16F84A-20I/SO or PIC16F84A-04/SO (MCU, pre-programmed; gray item in r1.6 BOM)
+- [x] **U12** — ATTINY24A-SSUR (MCU, pre-programmed; gray item in r1.6 BOM)
 
 **Note:** Factory-soldered SMD parts (resistors, capacitors, diodes, ferrites, transistors, logic ICs) are pre-populated by the PCB manufacturer

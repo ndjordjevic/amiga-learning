@@ -6,6 +6,7 @@ title: Alicia 1200 r1.6 – BOM (factory vs user‑soldered)
 
 - **Green rows** = factory populated (pre-soldered)
 - **Gray rows** = optional add-ons when ordering from Enterlogic: **U3, U5, U11, U12, CN8, CN9**
+- **Alicia 1200 r2.0 note**: your r2.0 kit/board will include **U3, U5, U11, U12** pre‑programmed (even though they are gray/optional in the r1.6 BOM).
 - **White rows** = user must solder (not factory-populated, not optional from Enterlogic)
 - Parts listed with manufacturer part numbers plus Digikey/Mouser references.
 - Original BOM: `docs/2025-10-08 BOM Alicia 1200 R1_6.pdf`.
